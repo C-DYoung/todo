@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 
 import TodoInput from 'app/components/TodoInput';
+import TodoItem from 'app/components/TodoItem';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -26,15 +27,6 @@ const Title = styled.h1`
 `;
 
 const TodoList = styled.div``;
-
-const TodoItem = styled.div`
-  display: flex;
-  aligin-item: center;
-  padding: 15px 25px;
-  widtah: 100%;
-  font-size: 1.2em;
-  border-bottom: 1px solid #eee;
-`;
 
 const TodoCheck = styled.input`
   margin-right: 15px;

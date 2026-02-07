@@ -13,11 +13,9 @@ const Box = styled.div`
 `;
 
 export default function TodoItem() {
-  // <></> 는 단순하게 코드상으로 연결 하는 것
   return (
     <Box>
-      <div style={{ background: 'yellow' }}>여기 보여?</div>
-      <Checkbox checked={true} />
+      <Checkbox></Checkbox>
       <Block marginLeft="50px" />
     </Box>
   );
