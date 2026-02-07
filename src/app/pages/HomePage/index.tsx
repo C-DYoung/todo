@@ -51,10 +51,7 @@ export function HomePage() {
           <Title>해야할 일</Title>
           <TodoInput />
           <TodoList>
-            <TodoItem>
-              <TodoCheck type="checkbox" />
-              나는 투두야
-            </TodoItem>
+            <TodoItem></TodoItem>
           </TodoList>
         </Box>
       </Wrapper>
