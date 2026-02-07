@@ -28,10 +28,27 @@ const Title = styled.h1`
 
 const TodoList = styled.div``;
 
-const TodoCheck = styled.input`
-  margin-right: 15px;
-`;
 export function HomePage() {
+  const [todoList, setTodoList] = React.useState<ITodoItem[]>([
+    {
+      id: '1',
+      content: 'first Todo',
+      completed: true,
+      editing: false,
+    },
+    {
+      id: '2',
+      content: 'seconde Todo',
+      completed: true,
+      editing: false,
+    },
+    {
+      id: '3',
+      content: 'third Todo',
+      completed: true,
+      editing: false,
+    },
+  ]);
   return (
     <>
       <Helmet>
@@ -41,32 +58,13 @@ export function HomePage() {
       <Wrapper>
         <Box>
           <Title>해야할 일</Title>
-          <TodoInput />
+          <TodoInput
+            setTodoList={(todo: ITodoItem) => setTodoList([todo, ...todoList])}
+          />
           <TodoList>
-            <TodoItem
-              todo={{
-                id: '1',
-                completed: false,
-                content: 'Todo list',
-                editing: false,
-              }}
-            ></TodoItem>
-            <TodoItem
-              todo={{
-                id: '2',
-                completed: true,
-                content: 'Todo list',
-                editing: false,
-              }}
-            ></TodoItem>
-            <TodoItem
-              todo={{
-                id: '3',
-                completed: true,
-                content: 'Todo list',
-                editing: false,
-              }}
-            ></TodoItem>
+            {todoList.map(todo => (
+              <TodoItem todo={todo} />
+            ))}
           </TodoList>
         </Box>
       </Wrapper>
