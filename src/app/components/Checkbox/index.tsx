@@ -8,6 +8,13 @@ const Circle = styled.div<{ checked?: boolean }>`
   border-radius: 50%;
   border: 2px solid ${props => (props.checked ? 'red' : '#eee')};
   padding: 3px;
+
+  //&은 본인을 지칭
+  & > .checkbox-icon {
+    width : 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: red;
 `;
 
 export default function Checkbox({
@@ -19,7 +26,9 @@ export default function Checkbox({
 }) {
   return (
     <>
-      <Circle checked={checked} onClick={onClick}></Circle>
+      <Circle checked={checked} onClick={onClick}>
+        {checked ? <div className="checkbox-icon" /> : null}
+      </Circle>
     </>
   );
 }
