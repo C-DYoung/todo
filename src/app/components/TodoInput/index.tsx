@@ -30,7 +30,7 @@ export default function TodoInput({
   editModeTodo?: () => void;
 }) {
   // <></> 는 단순하게 코드상으로 연결 하는 것
-  const [content, setContent] = React.useState<string>('');
+  const [content, setContent] = React.useState<string>(editContent || '');
   return (
     <Box isEditing={isEditing}>
       <Input
