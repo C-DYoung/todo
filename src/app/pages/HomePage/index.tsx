@@ -19,6 +19,7 @@ const Box = styled.div`
   height: 600px;
   background: white;
   box-shadow: 0px 25px 100px -60px rgba(0, 0, 0, 0.18);
+  border-radius: 15px;
 `;
 
 const Title = styled.h1`
@@ -34,7 +35,7 @@ export function HomePage() {
       id: '1',
       content: 'first Todo',
       completed: true,
-      editing: false,
+      editing: true,
     },
     {
       id: '2',
@@ -57,7 +58,7 @@ export function HomePage() {
       </Helmet>
       <Wrapper>
         <Box>
-          <Title>해야할 일</Title>
+          <Title>해야할 일 </Title>
           <TodoInput
             setTodoList={(todo: ITodoItem) => setTodoList([todo, ...todoList])}
           />
