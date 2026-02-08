@@ -6,7 +6,7 @@ import TodoInput from 'app/components/TodoInput';
 import TodoItem from 'app/components/TodoItem';
 import { TodoListSelector } from 'store/todo/selectors';
 import { useTodoSlice } from 'store/todo';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -35,6 +35,7 @@ const TodoList = styled.div``;
 export function HomePage() {
   const { TodoActions } = useTodoSlice();
   const todoList = useSelector(TodoListSelector);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -45,7 +46,11 @@ export function HomePage() {
       <Wrapper>
         <Box>
           <Title>해야할 일 </Title>
-          <TodoInput setTodoList={(todo: ITodoItem) => null} />
+          <TodoInput
+            addTodo={(content: string) =>
+              dispatch(TodoActions.addTodo(content))
+            }
+          />
           <TodoList>
             {todoList.map(todo => (
               <TodoItem todo={todo} />
