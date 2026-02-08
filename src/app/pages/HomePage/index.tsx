@@ -34,18 +34,18 @@ export function HomePage() {
       id: '1',
       content: 'first Todo',
       completed: true,
-      editing: true,
+      editing: false,
     },
     {
       id: '2',
       content: 'seconde Todo',
-      completed: true,
+      completed: false,
       editing: false,
     },
     {
       id: '3',
       content: 'third Todo',
-      completed: true,
+      completed: false,
       editing: false,
     },
   ]);
