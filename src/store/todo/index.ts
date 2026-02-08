@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
 import { TodoState } from './types';
 import { useInjectReducer } from 'redux-injectors';
+import { loadTodoData, svaeTodoData } from './localStorage';
 
 export const initialState: TodoState = {
-  todolist: [],
+  todolist: loadTodoData(),
 };
 
 const slice = createSlice({
@@ -13,6 +14,7 @@ const slice = createSlice({
     addTodo: {
       reducer: (state, action: PayloadAction<ITodoItem>) => {
         state.todolist.push(action.payload);
+        svaeTodoData(state.todolist);
       },
       prepare: (content: string) => {
         const id = nanoid();
@@ -32,6 +34,7 @@ const slice = createSlice({
       if (todo) {
         todo.completed = !todo.completed;
       }
+      svaeTodoData(state.todolist);
     },
     editModeTodo(state, action: PayloadAction<{ id: string }>) {
       const id = action.payload.id;
@@ -45,6 +48,7 @@ const slice = createSlice({
       if (todo) {
         todo.editing = !todo.editing;
       }
+      svaeTodoData(state.todolist);
     },
     editTodo(state, action: PayloadAction<{ id: string; content: string }>) {
       const id = action.payload.id;
@@ -59,6 +63,7 @@ const slice = createSlice({
       const id = action.payload.id;
       const filteredTodos = state.todolist.filter(todo => todo.id !== id);
       state.todolist = filteredTodos;
+      svaeTodoData(state.todolist);
     },
   },
 });
