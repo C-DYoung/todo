@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 import TodoInput from 'app/components/TodoInput';
 import TodoItem from 'app/components/TodoItem';
+import { TodoListSelector } from 'store/todo/selectors';
+import { useTodoSlice } from 'store/todo';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -30,26 +33,9 @@ const Title = styled.h1`
 const TodoList = styled.div``;
 
 export function HomePage() {
-  const [todoList, setTodoList] = React.useState<ITodoItem[]>([
-    {
-      id: '1',
-      content: 'first Todo',
-      completed: true,
-      editing: true,
-    },
-    {
-      id: '2',
-      content: 'seconde Todo',
-      completed: false,
-      editing: false,
-    },
-    {
-      id: '3',
-      content: 'third Todo',
-      completed: false,
-      editing: false,
-    },
-  ]);
+  const { TodoActions } = useTodoSlice();
+  const todoList = useSelector(TodoListSelector);
+
   return (
     <>
       <Helmet>
@@ -59,9 +45,7 @@ export function HomePage() {
       <Wrapper>
         <Box>
           <Title>해야할 일 </Title>
-          <TodoInput
-            setTodoList={(todo: ITodoItem) => setTodoList([todo, ...todoList])}
-          />
+          <TodoInput setTodoList={(todo: ITodoItem) => null} />
           <TodoList>
             {todoList.map(todo => (
               <TodoItem todo={todo} />
